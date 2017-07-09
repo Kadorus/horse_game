@@ -74,17 +74,29 @@ void draw(){
     PisH = true;
     text("my nam3 1s J1m and 1 am a bag of P1stach10s. n1c3 t0 m33t y0u.", 1000, 50);
   }
-  if(eTime > 1400 && eTime < 1700){
+  if(eTime > 1400 && eTime < 1800){
     text("Good Day! I am The Invisible And Intangible Disembodied Skull Of Former United States President Theodore Roosevelt. Tis a pleasent surprise to make your aquantince.", 5, 50); 
   }
-  if(eTime > 1700 && eTime < 1900){
-    text("You are now ready to go on an adventure! A portal opens in front of you and you and all your new friends are sucked in.", 100, 100); 
+  if(eTime > 1800 && eTime < 2000){
+    text("You are now ready to go on an adventure! A portal opens in front of you and you and all your new friends are sucked in.", 100, 800); 
+  }
+  if(eTime > 2000 && eTime < 2200){
+    text("You are now in a snowy landscape. You can see nothing in any direction.", 100, 800);  
+  }
+  if(eTime > 2200 && eTime < 2400){
+    text("So... what now.", 350, 450);
+  }
+  if(ßeTime > 2400 && eTime < 2600){
+    text("Yo Man None Of Us Know Any Better Than You.", 1000, 800);
+  }     
+  if(eTime > 2600 && eTime < 2800){
+    text("All of a sudden, a 
   }
   
   fill(50);
 }
 
-void keyPressed(){
+void keyPressed(){s
   if(key == 'y'){
     if(eTime == 800){
       choice1 = 1;  
