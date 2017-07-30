@@ -12,6 +12,7 @@ boolean stopped = false;
 
 float choice1 = 0;
 float choice2 = 0;
+float choice3 = 0;
 
 void setup(){
   size(2000,1000);
@@ -76,7 +77,7 @@ void draw(){
     text("my nam3 1s J1m and 1 am a bag of P1stach10s. n1c3 t0 m33t y0u.", 1000, 50);
   }
   if(eTime > 1400 && eTime < 1800){
-    text("Good Day! I am The Invisible And Intangible Disembodied Skull Of Former United States President Theodore Roosevelt. Tis a pleasent surprise to make your aquantince.", 5, 50); 
+    text("Good Day! I am The Invisible And Intangible Disembodied Skull Of Former United States President Theodore Roosevelt. Or TIAIDSOFUSPTR for short.", 5, 50); 
   }
   if(eTime > 1800 && eTime < 2000){
     text("Wow what a cast of zany and wacky characters. Im leaving now bye.", 760,450);
@@ -89,7 +90,7 @@ void draw(){
     text("You are now in a snowy landscape. You can see nothing in any direction.", 100, 800);  
   }
   if(eTime > 2400 && eTime < 2600){
-    text("So... what now.", 350, 450);
+    text("so... what now", 350, 450);
   }
   if(eTime > 2600 && eTime < 2800){
     text("Yo Man None Of Us Know Any Better Than You.", 1000, 800);
@@ -106,8 +107,7 @@ void draw(){
   }
   if(eTime > 3400 && eTime < 3600){
     if(choice2==-1){
-      text("You don't explore anything. You just sit there for 15 minutes.", 110, 800);
-      eTime = 3400;
+      text("You don't explore anything. You just sit there for 15 minutes. The squad gets bored though, and then force you to go check. You find a rock.", 50, 800);
     }
     if(choice2==1){
       text("You explore the hut. You find a staircase. At the bottom there is a magical portal, but it is hidden behind a small rock.", 50, 800);
@@ -131,20 +131,43 @@ void draw(){
   if(eTime > 4600 && eTime < 4800){
     text("Everyone seems to accept this logic and goes to sleep in the hut.", 100, 800);
   }
-  if(eTime > 4400 && eTime < 4600){
+  if(eTime > 4800 && eTime < 5000){
     text("When everyone wakes up, like half the juice boxes and bratwursts are gone.", 100, 800); 
   }
-  if(eTime > 4600 && eTime < 4800){
+  if(eTime > 5000 && eTime < 5200){
     text("where did all the stuff go says jackson", 350, 450);
   }
-  if(eTime > 4800 && eTime < 5000){
+  if(eTime > 5200 && eTime < 5400){
     text("s0m30n3 must hav3 3at3n th3m!!!11!1!111!11!1!!!", 1000 , 50);
   }
-  if(eTime == 5000){
+  if(eTime == 5400){
     stopped = true;
     text("Who do you think ate all the stuff? Press j for Jim, t for TIAIDSOFUSPTR, and p for Ladle the Ladle.", 100, 800); 
   }
-  if(eTime
+  if(eTime > 5400 && eTime < 5600){
+    if(choice3 == -1){
+     text("You punch Jim. He dies", 100, 800);
+     PisH = false;
+    }
+    if(choice3 == 1){
+     text("You punch The Invisible And Intagible Disembodied Skull Of Former United States President Theodore Roosevelt. He dies.", 50, 800);
+    }
+    if(choice3 == 2){
+     text("You try to punch Ladle the Ladle, but Jim jumps in the way, screaming about how we shouldn't hurt each other. You punch Jim and he dies.", 50, 800);
+     PisH = false;
+    }
+  }
+  if(eTime > 5600 && eTime < 5800){
+   if(choice3 == -1 || choice3 == 2){
+    text("Why Did Jim Have To Die! He Can't Even Eat The Food He Has No Mouth!", 1000, 800);
+   }
+   if(choice3 == 1){
+    text("Why Did You Punch Mr. TIAIDSOFUSPTR! He Can't Even Eat! He's Intangible!", 1000, 800);
+   }
+  }
+  if(eTime > 5800 && eTime < 6000){
+   
+  }
   
   
   fill(50);
@@ -172,6 +195,21 @@ void keyPressed(){
      choice2 = -1;
      stopped = false;
    }
+   if(eTime == 5400){
+    choice3 = 1;
+    stopped = false;
+   }
   }
-  if(key == 
+  if(key == 'j'){
+   if(eTime == 5400){
+    choice3 = -1; 
+    stopped = false;
+   }
+  }
+  if(key == 'p'){
+   if(eTime == 5400){
+    choice3 = 2; 
+    stopped = false;
+   }
+  }
 }
