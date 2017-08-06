@@ -13,6 +13,7 @@ boolean stopped = false;
 float choice1 = 0;
 float choice2 = 0;
 float choice3 = 0;
+float choice4 = 0;
 
 void setup(){
   size(2000,1000);
@@ -25,7 +26,7 @@ void setup(){
 void draw(){
   background(255);
   if(stopped == false){
-    eTime++;
+    eTime+=.5;
   }
   //Characters=========================
   if(JacH == true){
@@ -90,10 +91,10 @@ void draw(){
     text("You are now in a snowy landscape. You can see nothing in any direction.", 100, 800);  
   }
   if(eTime > 2400 && eTime < 2600){
-    text("so... what now", 350, 450);
+    text("so... what now", 425, 450);
   }
   if(eTime > 2600 && eTime < 2800){
-    text("Yo Man None Of Us Know Any Better Than You.", 1000, 800);
+    text("Yo Man None Of Us Know Any Better Than You.", 1150, 800);
   }     
   if(eTime > 2800 && eTime < 3100){
     text("You guys wander across the snow for days on end, without food or water. But just as Ladle the Ladle is about the keel over from starvation, you spot a little hut!", 50, 800);
@@ -117,10 +118,10 @@ void draw(){
     text("Even though the rock is the size of one of your hooves, you cannot go past it. You notice that above you there is a sign that says press X to destroy.", 50, 800); 
   }
   if(eTime > 3800 && eTime < 4000){
-    text("You press X, and a little bar appears over the rock saying it will take 9 days. You can use 80 gems to speed this up. But you don't have any gems, you left them at home.", 50, 800); 
+    text("You press X, and a little bar appears over the rock saying it will take 9 days. You can use 80 gems to speed this up.", 50, 800); 
   }
   if(eTime > 4000 && eTime < 4200){
-    text("You go and tell all the others the news.", 130, 800); 
+    text("Sadly, you left all you're gems at home. You go and tell all the others the news.", 130, 800); 
   }
   if(eTime > 4200 && eTime < 4400){
     text("But Dude We Cant Last Nine Days We Only Have Juice Boxes And Bratwursts For A Week.", 1000, 800); 
@@ -142,7 +143,7 @@ void draw(){
   }
   if(eTime == 5400){
     stopped = true;
-    text("Who do you think ate all the stuff? Press j for Jim, t for TIAIDSOFUSPTR, and p for Ladle the Ladle.", 100, 800); 
+    text("Who do you think ate all the stuff? Press j for Jim, t for TIAIDSOFUSPTR, p for Ladle the Ladle, and k if you think YOU are the culprit.", 100, 800); 
   }
   if(eTime > 5400 && eTime < 5600){
     if(choice3 == -1){
@@ -156,6 +157,10 @@ void draw(){
      text("You try to punch Ladle the Ladle, but Jim jumps in the way, screaming about how we shouldn't hurt each other. You punch Jim and he dies.", 50, 800);
      PisH = false;
     }
+    if(choice3 == 420){
+      text("You punch yourself. You die. You lose D:", 100, 800);
+      stopped = true;
+    }
   }
   if(eTime > 5600 && eTime < 5800){
    if(choice3 == -1 || choice3 == 2){
@@ -166,9 +171,55 @@ void draw(){
    }
   }
   if(eTime > 5800 && eTime < 6000){
-   
+    text("That is a logical argument, thinks Jackson. But then who is the real culprit?", 50, 800);
   }
-  
+  if(eTime == 6000){
+   stopped = true;
+   if(choice3 == -1 || choice3 == 2){
+     text("If you think it was TIAIDSOFUSPTR, press t. If you think it was Ladle the Ladle, press p.", 100, 800); 
+   }
+   if(choice3 == 1){
+     text("If you think it was Jim, press j. If you think it was Ladle the Ladle, press p.", 100, 800); 
+   }
+  }
+  if(eTime > 6000 && eTime < 6300){
+    if(choice4 == 1 && (choice3 == -1 || choice3 == 2)){
+      text("You punch Ladle. He dies. The only person alive is TIAIDSOFUSPTR! He must be the culprit! You punch him. He dies.", 100, 800);
+      LadH = false;
+    }
+    if(choice4 == 1 && choice3 == 1){
+      text("You punch Ladle. He dies. The only person alive is Jim! He mush be the culprit! You punch him. He dies.", 100, 800); 
+      LadH = false; PisH = false;
+    }
+    if(choice4 == -1 && (choice3 == -1 || choice3 == 2)){
+      text("You punch TIAIDSOFUSPTR. He dies. The only ones alive are you and Ladle.", 100, 800); 
+    }
+    if(choice4 == -1 && choice3 == 1){
+      text("You punch Jim. He dies. The only ones alive are you and Ladle.", 100, 800); 
+      PisH = false;
+    }
+  }
+  if(eTime > 6300 && eTime < 6500){
+   if(choice4 == -1){
+    text("Well Now We Are The Last Two. I Know That I Didn't Do It, So You Must Be The Culprit!", 1000, 800); 
+   }
+   if(choice4 == 1){
+    text("Now that you are the only one alive, you have more than enough food to last until the portal is open.", 100, 800); 
+   }
+  }
+  if(eTime > 6500 && eTime < 6700){
+   if(choice4 == -1){
+     text("He's right! Wait, you don't remember doing the deed either. He must be lying! You punch him. He dies.", 100, 800);
+     LadH = false;
+   }
+   if(choice4 == 1){
+     text("The bratwursts and juice boxes are delicious.", 100, 800); 
+   }
+  }
+  if(eTime > 6700 && eTime < 7000){
+    text("You won! Good job! When the rock is done being destroyed you go through the portal into happy town then you live happily ever after yay.", 100, 800); 
+    stopped = true;
+  }
   
   fill(50);
 }
@@ -199,11 +250,23 @@ void keyPressed(){
     choice3 = 1;
     stopped = false;
    }
+   if(eTime == 6000){
+     if(choice3 == -1 || choice3 == 2){
+        choice4 = -1;
+        stopped = false;
+     }
+   }
   }
   if(key == 'j'){
    if(eTime == 5400){
     choice3 = -1; 
     stopped = false;
+   }
+   if(eTime == 6000){
+    if(choice3 == 1){
+      choice4 = -1;
+      stopped = false;
+    }
    }
   }
   if(key == 'p'){
@@ -211,5 +274,14 @@ void keyPressed(){
     choice3 = 2; 
     stopped = false;
    }
+   if(eTime == 6000){
+    choice4 = 1;
+    stopped = false;
+   }
+  }
+  if(key == 'k'){
+    if(eTime == 5400){
+      choice3 = 420; 
+    }
   }
 }
