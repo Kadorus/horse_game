@@ -7,6 +7,8 @@ PImage Ladle;boolean LadH = false;
 float Ladx = 1400;float Lady = 500;
 PImage Pistachios;boolean PisH = false;
 float Pisx = 1400;float Pisy = 100;
+PImage Mike;boolean MikH = false;
+float Mikx =700;float Miky = 150;
 
 boolean stopped = false;
 
@@ -14,6 +16,10 @@ float choice1 = 0;
 float choice2 = 0;
 float choice3 = 0;
 float choice4 = 0;
+float choice5 = 0;
+float choice55 = 0;
+float choice6 = 0;
+float choice7 = 0;
 
 void setup(){
   size(2000,1000);
@@ -21,6 +27,7 @@ void setup(){
   horseJesus = loadImage("horsejesus.jpeg");
   Ladle = loadImage("ladle.jpg");
   Pistachios = loadImage("pistachios.jpg");
+  Mike = loadImage("mike.png");
 }
 
 void draw(){
@@ -40,6 +47,9 @@ void draw(){
   }
   if(PisH == true){
     image(Pistachios, Pisx, Pisy); 
+  }
+  if(MikH == true){
+    image(Mike, Mikx, Miky);
   }
  
   //Events=============================
@@ -218,8 +228,85 @@ void draw(){
   }
   if(eTime > 6700 && eTime < 7000){
     text("You won! Good job! When the rock is done being destroyed you go through the portal into happy town then you live happily ever after yay.", 100, 800); 
+  }
+  if(eTime > 7200 && eTime < 7400){
+    text("Haha just kidding now you are in hell. The only things you can see are a sign that says welcome to hell and a penguin.", 100, 800);
+    
+  }
+  if(eTime > 7400 && eTime < 7600){
+    MikH = true;
+    text("Hey BRO my NOMBRE is Mike DUDE.", 650, 100);
+  }
+  if(eTime > 7600 && eTime < 7800){
+    text("how come everyone i meet has a silly speech impediment wondered jackson aloud says jackson." , 100, 450);
+  }
+  if(eTime > 7800 && eTime < 8000){
+    text("I don't know but you should follow me my BRODACIOUS BRO.", 750, 75); 
+  }
+  if(eTime == 8000){
+    stopped = true;
+    text("Do you follow Mike the hell penguin? Press y if you don't and n if you don't.", 100, 800);
+  }
+  if(eTime > 8000 && eTime < 8200){
+    if(choice5 == 1){
+      MikH = false;
+      text("Mike shows you to the fun room and then leaves. In it there is a giant throne made out of dinosaur skulls.", 100, 800);
+    }
+    if(choice5 == -1 && eTime == 8100){
+      stopped = true;
+      text("Are you TUBULARLY sure you don't want to follow me? press y if you will follow him and n if you refuse.", 750, 75);
+    }
+  }
+  if(eTime > 8200 && eTime < 8400){
+    if(choice5 == 1){
+      text("You wait around in the fun room for a few minutes but nothing is happening.", 100, 800);
+    }
+    if(choice5 == -1){
+      if(choice55 == 1){
+        text("Mike takes you to the fun room and then leaves you alone. In it there is a giant throne made of dinosaur skills.", 100, 800); 
+      }
+      if(choice55 == -1){
+        JacH = false;
+        text("You spontaneously combust and now you are dead. You lose oh no.", 500, 500); 
+        stopped = true;
+        Mikx--;
+      }
+    }
+  }
+  if(eTime > 8400 && eTime < 8600){
+    JesH = true;
+    text("All of a sudden Horse Jesus appears.", 100, 800);  
+  }
+  if(eTime > 8600 && eTime < 8800){
+    text("Hey it's me horse jesus i am the ruler of the underworld and now i am going to use you as a human sacrifice.", 825, 450);
+  }
+  if(eTime == 8800){
+    stopped = true;
+    text("If you are fine being human sacrificed press k if you think horse jesus is dumb and you don't want to be sacrificed press p.", 100, 800);
+  }
+  if(eTime > 8800 && eTime < 9000){
+   if(choice7 == 1){
+     stopped = true;
+     text("Horse Jesus human sacrifices you and so you are dead now. You lose XD.", 100, 800);
+     JacH = false;
+   }
+   if(choice7 == -1){
+     text("you cant human sacrifice me because i am a horse you silly billy.", 350, 450);
+   }
+  }
+  if(eTime > 9000 && eTime < 9200){
+    text("Oh you are right. I guess I will send you home now. Bye-bye.", 900, 450); 
+    JesH = false;
+  }
+  if(eTime > 9400 && eTime < 9600){
+    text("You enjoy the rest of your life in peace at your house. You become a prosperous vinegar farmer. You win. The end.", 100, 800); 
     stopped = true;
   }
+  
+  
+  
+  /*
+  */
   
   fill(50);
 }
@@ -234,11 +321,27 @@ void keyPressed(){
      choice2 = 1;
      stopped = false;
    }
+   if(eTime == 8000){
+    choice5 = 1;
+    stopped = false;
+   }
+   if(eTime == 8100){
+    choice55 = 1;
+    stopped = false;
+   }
   }
   if(key == 'n'){
    if(eTime == 800){
      choice1 = -1;
      stopped = false;
+   }
+   if(eTime == 8000){
+     choice5 = -1;
+     stopped = false;
+   }
+   if(eTime == 8100){
+    choice55 = -1;
+    stopped = false;
    }
   }
   if(key == 't'){
@@ -278,10 +381,19 @@ void keyPressed(){
     choice4 = 1;
     stopped = false;
    }
+   if(eTime == 8800){
+    choice7 = -1;
+    stopped = false;
+   }
   }
   if(key == 'k'){
     if(eTime == 5400){
       choice3 = 420; 
+      stopped = false;
+    }
+    if(eTime == 8800){
+      choice7 = 1; 
+      stopped = false;
     }
   }
 }
