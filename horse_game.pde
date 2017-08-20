@@ -263,7 +263,7 @@ void draw(){
     }
     if(choice5 == -1){
       if(choice55 == 1){
-        text("Mike takes you to the fun room and then leaves you alone. In it there is a giant throne made of dinosaur skills.", 100, 800); 
+        text("Mike takes you to the fun room and then leaves you alone. In it there is a giant throne made of dinosaur skulls. You spot Barney's in there.", 100, 800); 
       }
       if(choice55 == -1){
         JacH = false;
